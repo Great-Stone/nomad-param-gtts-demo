@@ -21,7 +21,7 @@ nomad agent -dev
 
 ## 3. Parameterized Job 실행
 
-1. UI 좌측에서 `Jobs`를 선택합니다.
+1. UI 좌측에서 `Jobs`를 선택합니다.
 2. Job UI 화면에서 우측의 `Run Job` 버튼을 클릭합니다.
 3. `gtts-param.hcl`의 내용을 복사하여 `Job Definition`에 붙여넣습니다.
 4. 하단의 `Plan` 버튼을 클릭하고 문제가 없는지 확인합니다.
