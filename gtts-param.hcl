@@ -37,7 +37,7 @@ job "gtts-param" {
       }
 
       artifact {
-        source      = "https://github.com/Great-Stone/nomad-param-gtts-demo/releases/download/0.1.1/creator.zip"
+        source      = "https://github.com/Great-Stone/nomad-param-gtts-demo/releases/download/0.1.2/creator.zip"
         destination = "local"
       }
 
@@ -73,7 +73,7 @@ job "gtts-param" {
       }
 
       artifact {
-        source      = "https://github.com/Great-Stone/nomad-param-gtts-demo/releases/download/0.1.1/player.zip"
+        source      = "https://github.com/Great-Stone/nomad-param-gtts-demo/releases/download/0.1.2/player.zip"
         destination = "local"
       }
 
