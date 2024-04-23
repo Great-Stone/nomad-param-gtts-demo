@@ -12,7 +12,7 @@ def create_voice_from_file(text_file, output_file):
 
 # Specify your text file and output file
 
-alloc_dir = my_port = int(os.environ.get("NOMAD_ALLOC_DIR", "../../alloc"))
+alloc_dir = os.environ.get("NOMAD_ALLOC_DIR", "../../alloc")
 
 text_file_path = f'{alloc_dir}/conversation.txt'
 output_file_path = f'{alloc_dir}/output.mp3'

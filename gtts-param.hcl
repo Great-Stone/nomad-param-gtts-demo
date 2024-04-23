@@ -10,6 +10,10 @@ job "gtts-param" {
 
   group "create-and-play" {
 
+    network {
+      port "player" {}
+    }
+
     task "creat" {
       driver = "raw_exec"
 
@@ -26,18 +30,19 @@ job "gtts-param" {
         destination = "local/start.sh"
         data        = <<-EOF
         #!/bin/bash
+        echo ${NOMAD_ALLOC_DIR}
         cd local/creator
         pip3 install -r requirements.txt --break-system-packages
         EOF
       }
 
       artifact {
-        source      = "https://github.com/Great-Stone/nomad-param-gtts-demo/releases/download/0.1.0/creator.zip"
+        source      = "https://github.com/Great-Stone/nomad-param-gtts-demo/releases/download/0.1.1/creator.zip"
         destination = "local"
       }
 
       dispatch_payload {
-        file = "../alloc/conversation.txt"
+        file = "../../alloc/conversation.txt"
       }
 
       resources {
@@ -53,16 +58,22 @@ job "gtts-param" {
         command = "local/start.sh"
       }
 
+      env {
+        MY_PORT = "${NOMAD_PORT_player}"
+      }
+
       template {
         destination = "local/start.sh"
         data        = <<-EOF
         #!/bin/bash
-        cat ../alloc/conversation.txt
+        cd local/player
+        pip3 install -r requirements.txt --break-system-packages
+        python3 main.py
         EOF
       }
 
       artifact {
-        source      = "https://github.com/Great-Stone/nomad-param-gtts-demo/releases/download/0.1.0/player.zip"
+        source      = "https://github.com/Great-Stone/nomad-param-gtts-demo/releases/download/0.1.1/player.zip"
         destination = "local"
       }
 
