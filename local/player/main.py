@@ -20,7 +20,7 @@ def copy_file_to_static(file_path: str, destination: str):
         raise HTTPException(status_code=404, detail="File not found")
     shutil.copy(file_path, destination)
 
-alloc_directory = "../alloc"
+alloc_directory = my_port = int(os.environ.get("NOMAD_ALLOC_DIR", "../../alloc"))
 output_file = "output.mp3"
 output_file_path = os.path.join(alloc_directory, output_file)
 static_directory = "static"
