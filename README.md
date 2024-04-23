@@ -42,6 +42,10 @@ nomad agent -dev
 4. 하단의 `Ports` 정보에서 `player`의 host address를 확인하고 클릭합니다.
 5. player를 클릭하여 입력한 데이터가 음성으로 출력됨을 확인합니다.
 
+
+https://github.com/Great-Stone/nomad-param-gtts-demo/assets/15207645/77651dd1-3683-45c1-852d-eb5bcb90f028
+
+
 ## 4. Job 구조 설명
 
 ```hcl
