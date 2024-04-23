@@ -1,7 +1,7 @@
 job "gtts-param" {
   datacenters = ["dc1"] # 사용할 데이터 센터 이름으로 수정
 
-  type = "sysbatch" # 배치 작업 유형
+  type = "batch" # 배치 작업 유형
 
   parameterized {
     payload       = "required"
@@ -14,7 +14,7 @@ job "gtts-param" {
       port "player" {}
     }
 
-    task "creat" {
+    task "create" {
       driver = "raw_exec"
 
       lifecycle {
@@ -33,11 +33,12 @@ job "gtts-param" {
         echo ${NOMAD_ALLOC_DIR}
         cd local/creator
         pip3 install -r requirements.txt --break-system-packages
+        python3 main.py
         EOF
       }
 
       artifact {
-        source      = "https://github.com/Great-Stone/nomad-param-gtts-demo/releases/download/0.1.3/creator.zip"
+        source      = "https://github.com/Great-Stone/nomad-param-gtts-demo/releases/download/0.1.4/creator.zip"
         destination = "local"
       }
 
@@ -73,7 +74,7 @@ job "gtts-param" {
       }
 
       artifact {
-        source      = "https://github.com/Great-Stone/nomad-param-gtts-demo/releases/download/0.1.3/player.zip"
+        source      = "https://github.com/Great-Stone/nomad-param-gtts-demo/releases/download/0.1.4/player.zip"
         destination = "local"
       }
 
